@@ -1,31 +1,43 @@
 let slideIndex = 1;
-showSlides(slideIndex);
+showSlides(slideIndex, 'announcement');
 
-function plusSlides(n) {
-    showSlides(slideIndex += n);
+function plusSlides(n, type) {
+(type === 'announcement') 
+        showSlides(slideIndex += n, 'announcement');
+      {
+        showSlides(slideIndex += n, 'banner');
+    }
 }
 
-function currentSlide(n) {
-    showSlides(slideIndex = n);
-}
-
-function showSlides(n) {
+function showSlides(n, type) {
     let i;
-    let slides = document.getElementsByClassName("mySlides");
-    let dots = document.getElementsByClassName("dot");
-    if (n > slides.length) {slideIndex = 1}    
-    if (n < 1) {slideIndex = slides.length}
-    for (i = 0; i < slides.length; i++) {
-        slides[i].style.display = "none";  
+    let slides;
+    
+    if (type === 'announcement') {
+        slides = document.getElementsByClassName("mySlides");
+        if (n > slides.length) {slideIndex = 1}    
+        if (n < 1) {slideIndex = slides.length}
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";  
+        }
+        slides[slideIndex-1].style.display = "block";  
+    } else {
+        slides = document.getElementsByClassName("banner-slideshow")[0].getElementsByClassName("mySlides");
+        if (n > slides.length) {slideIndex = 1}    
+        if (n < 1) {slideIndex = slides.length}
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";  
+        }
+        slides[slideIndex-1].style.display = "block";  
     }
-    for (i = 0; i < dots.length; i++) {
-        dots[i].className = dots[i].className.replace(" active", "");
-    }
-    slides[slideIndex-1].style.display = "block";  
-    dots[slideIndex-1].className += " active";
 }
 
 
 setInterval(() => {
-    plusSlides(1);
+    plusSlides(1, 'announcement');
 }, 5000);
+
+
+setInterval(() => {
+    plusSlides(1, 'banner');
+}, 3000);
