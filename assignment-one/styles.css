@@ -18,6 +18,47 @@ header {
     align-items: center;
 }
 
+#slideshow {
+    overflow: hidden;
+    height: 510px;
+    width: 728px;
+    margin: 0 auto;
+}
+
+
+.slide {
+    float: left;
+    height: 510px;
+    width: 728px;
+}
+
+
+.slide-wrapper {
+
+    width: calc(728px * 4);
+
+    animation: slide 10s ease infinite;
+}
+
+
+@keyframes slide {
+
+   
+    30% {
+        margin-left: 0px;
+    }
+
+    60% {
+        margin-left: calc(-728px * 1);
+    }
+
+    90% {
+        margin-left: calc(-728px * 2);
+    }
+
+   
+}
+
 .logo {
   
     
@@ -44,6 +85,9 @@ nav ul li a {
     padding: 50px 20px;
     text-align: center;
 }
+
+
+
 
 .hero h1 {
     font-size: 36px;
