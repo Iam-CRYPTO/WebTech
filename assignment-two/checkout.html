@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SP20-BCS-159</title>
+    <link rel="stylesheet" href="styles.css">
+    
+</head>
+<body>
+    <header>
+        <h3 id="announce"> Assignment#2 Checkout Page</h3>
+        <div class="logo"> <a href="index.html">
+            <img src="./assets/Logo.png" width="250" title="ULTRA CLUB SHOP" alt="ULTRA Club Shop LOGO">
+        </a></div>
+        <nav>
+            <ul>
+                <li><a href="#">Markhor Casuals</a></li>
+                <li><a href="#">Takhleeq ethnic</a></li>
+                <li><a href="#">Formals</a></li>
+                <li><a href="#">Winter Collection</a></li>
+                <li><a href="#">Basics</a></li>
+                <li><a href="./checkout.html">Check Out</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <h2>CheckOut Form:</h2>
+    <form id="checkoutForm" style="text-align: center;">
+        <label for="name">Name:</label><br>
+        <input type="text" id="name" name="name"><br>
+        <div class="error" id="nameError"></div>
+
+        <label for="email">Email:</label><br>
+        <input type="email" id="email" name="email"><br>
+        <div class="error" id="emailError"></div>
+
+        <label for="address">Address:</label><br>
+        <input type="text" id="address" name="address"><br>
+        <div class="error" id="addressError"></div>
+
+        <label for="city">City:</label><br>
+        <input type="text" id="city" name="city"><br>
+        <div class="error" id="cityError"></div>
+
+        <br>
+        <input type="submit" value="Submit">
+    </form>
+
+    <script>
+        document.getElementById('checkoutForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            document.getElementById('nameError').innerText = '';
+            document.getElementById('emailError').innerText = '';
+            document.getElementById('addressError').innerText = '';
+            document.getElementById('cityError').innerText = '';
+
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const address = document.getElementById('address').value.trim();
+            const city = document.getElementById('city').value.trim();
+
+            let isValid = true;
+
+            if (!name) {
+                document.getElementById('nameError').innerText = 'Name is required.';
+                isValid = false;
+            }
+
+            if (!email) {
+                document.getElementById('emailError').innerText = 'Email is required.';
+                isValid = false;
+            } else if (!/\S+@\S+\.\S+/.test(email)) {
+                document.getElementById('emailError').innerText = 'Email is invalid.';
+                isValid = false;
+            }
+
+            if (!address) {
+                document.getElementById('addressError').innerText = 'Address is required.';
+                isValid = false;
+            }
+
+            if (!city) {
+                document.getElementById('cityError').innerText = 'City is required.';
+                isValid = false;
+            }
+
+            if (isValid) {
+                alert('Form submitted successfully!');
+            }
+        });
+    </script>
+     <footer>
+        <p>&copy; 2024 Ultra Club Shop --  SP20-BCS-159</p>
+    </footer>
+</body>
+</html>
+
+</body>
+</html>
